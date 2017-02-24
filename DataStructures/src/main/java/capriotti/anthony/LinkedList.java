@@ -3,53 +3,123 @@ package capriotti.anthony;
 /**
  * Created by anthonycapriotti on 2/24/17.
  */
-public class LinkedList {
+public class LinkedList<T> {
 
-    private Link first;
-    private Link last;
+    Link<T> first;
+    Link<T> last;
     private int size = 0;
 
 
-    public LinkedList(){
+    public LinkedList(){}
 
+
+    public void addFirstLink(T t){
+        Link<T> link = new Link(t);
+
+        if (size == 0){
+            first = last = link;
+        } else {
+            link.next = first;
+            first.previous = link;
+            first = link;
+        }
+        size++;
     }
 
+    public void addLastEntry(Link<T> t){
+        if (size == 0)
+            first = last = t;
+        else {
+            t.previous = last;
+            last.next = t;
+            last = t;
+        }
+        size++;
+    }
 
+    public boolean add(T t){
+        addLastEntry(new Link<T>(t));
+        return true;
+    }
+
+    public T get(int position){
+        Link<T> link;
+        if (position < size/2){
+            link = first;
+            while (position-- > 0)
+                link = link.next;
+        }
+        else {
+            link = last;
+            while (++position < size)
+                link = link.previous;
+        }
+        return link.names;
+    }
 
     public boolean isEmpty(){
-        return false;
-    }
-
-    public boolean addLink(String names){
-        return false;
-    }
-
-    public Link removeLink(){
-        return null;
-    }
-
-    public Link find(String names){
-        return null;
-    }
-
-    public int size(){
-        return 0;
-    }
-
-    public boolean contains(String names){
-        return false;
+        if (size == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void clear(){
-        return;
+        if (size > 0)
+            first = null;
+            last = null;
+            size = 0;
+    }
+
+    public int size(){
+        return size;
+    }
+
+    void remove(Link<T> t){
+        size--;
+        if (size == 0) {
+            first = last = null;
+
+        } else if (t == first){
+                first = t.next;
+                t.next.previous = null;
+
+            } else if (t == last){
+                last = t.previous;
+                t.previous.next = null;
+
+            } else {
+                t.next.previous = t.previous;
+                t.previous.next = t.next;
+            }
+    }
+
+    public boolean contains(T t){
+        Link<T> link = first;
+        while (link != null){
+            if (t.equals(link.names))
+                return true;
+            link = link.next;
+        }
+        return false;
     }
 
 
-/*
-    public void get(){}
+
+
     public void copy(){}
     public void sort(){}
-*/
+
+
+
+
+
 
 
 }
+
+
+
+
+

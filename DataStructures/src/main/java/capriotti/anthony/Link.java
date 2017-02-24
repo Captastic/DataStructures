@@ -5,14 +5,16 @@ import java.util.List;
 /**
  * Created by anthonycapriotti on 2/24/17.
  */
-public class Link {
+public class Link<T> {
 
-     String names;
-     Link next;
-     Link previous;
+     T names;
+     Link<T> next;
+     Link<T> previous;
 
-     Link(String names){
+     Link(T names){
          this.names = names;
      }
+
+
 
 }
