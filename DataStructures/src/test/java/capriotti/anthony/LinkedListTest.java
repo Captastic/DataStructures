@@ -90,6 +90,14 @@ public class LinkedListTest {
         assertEquals("False, falcon no here", expected, actual);
     }
 
+    @Test
+    public void copyTest(){
+        linkedList.add("T'Challa");
+        LinkedList<String> linkedList2 = linkedList.copy();
+        assertEquals("Steve Rodgers",linkedList2.get(0) );
+        assertEquals("T'Challa", linkedList2.get(1));
+    }
+
 
 
 

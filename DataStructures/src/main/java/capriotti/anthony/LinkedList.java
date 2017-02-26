@@ -105,11 +105,18 @@ public class LinkedList<T> {
         return false;
     }
 
+    public LinkedList<T> copy(){
+        LinkedList<T> copiedList = new LinkedList<T>();
+        copiedList.first = null;
+        for (Link<T> link = first; link != null; link = link.next)
+            copiedList.add(link.names);
+        return copiedList;
+    }
 
 
 
-    public void copy(){}
     public void sort(){}
+    public void slice(){}
 
 
 
