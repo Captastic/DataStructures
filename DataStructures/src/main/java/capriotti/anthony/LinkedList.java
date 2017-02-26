@@ -75,26 +75,7 @@ public class LinkedList<T> {
     public int size(){
         return size;
     }
-
-    void remove(Link<T> t){
-        size--;
-        if (size == 0) {
-            first = last = null;
-
-        } else if (t == first){
-                first = t.next;
-                t.next.previous = null;
-
-            } else if (t == last){
-                last = t.previous;
-                t.previous.next = null;
-
-            } else {
-                t.next.previous = t.previous;
-                t.previous.next = t.next;
-            }
-    }
-
+    
     public boolean contains(T t){
         Link<T> link = first;
         while (link != null){
@@ -112,6 +93,41 @@ public class LinkedList<T> {
             copiedList.add(link.names);
         return copiedList;
     }
+
+/*
+    void remove(int index){
+        Link<T> temp = first;
+        for (int i = 0; i < index; i++){
+            temp = temp.next;
+        }
+        if (temp.next.next == null)
+            temp.next = null;
+
+        temp.next = temp.next.next;
+            size--;
+    }
+*/
+/*    void remove(Link<T> t){
+        size--;
+        if (size == 0) {
+            first = last = null;
+
+        } else if (t == first){
+                first = t.next;
+                t.next.previous = null;
+
+            } else if (t == last){
+                last = t.previous;
+                t.previous.next = null;
+
+            } else {
+                t.next.previous = t.previous;
+                t.previous.next = t.next;
+            }
+    }
+*/
+
+
 
 
 
